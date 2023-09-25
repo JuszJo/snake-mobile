@@ -67,7 +67,7 @@ export default function App() {
     return (
         <SafeAreaView {...panResponder.panHandlers} style={styles.view}>
             {/* <Text>Hello</Text> */}
-            <GameEngine ref={engine} style={styles.engine} entities={entities} systems={systems}>
+            <GameEngine ref={engine} style={styles.engine} running={() => {}} entities={entities} systems={systems} onEvent={(e) => {}}>
 
             </GameEngine>
         </SafeAreaView>
@@ -79,13 +79,14 @@ console.log(BoardSize);
 const styles = StyleSheet.create({
     view: {
         marginTop: StatusBar.currentHeight,
-        flexBasis: "100%"
+        flexBasis: "100%",
+        alignItems: "center"
     },
 
     engine: {
         width: BoardSize,
         height:  BoardSize,
-        backgroundColor: "Black",
+        backgroundColor: "black",
         border: "1px solid black",
     }
 })
