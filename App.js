@@ -4,10 +4,26 @@ import { GameEngine } from 'react-native-game-engine';
 import constants from './constants';
 import Head from './components/Head';
 import GameLoop from './systems/Loop';
+import Food from './components/Food';
+import Tail from './components/Tail';
 
 const BoardSize = constants.GRID_SIZE * constants.CELL_SIZE
 
 const entities = {
+    food: {
+        position: [10, 10],
+        size: constants.CELL_SIZE,
+        color: "green",
+        renderer: <Food />
+    },
+
+    tail: {
+        size: constants.CELL_SIZE,
+        color: "grey",
+        elements: [],
+        renderer: <Tail />
+    },
+
     head: {
         position: [0, 0],
         size: constants.CELL_SIZE,
@@ -17,7 +33,7 @@ const entities = {
         xspeed: 0,
         yspeed: 1,
         renderer: <Head />
-    }
+    },
 }
 
 const systems = [GameLoop]
@@ -54,7 +70,7 @@ export default function App() {
 
             const movement = movementState[Math.max(Math.abs(gestureState.dx), Math.abs(gestureState.dy))]
             
-            console.log(movement);
+            // console.log(movement);
 
             engine.current.dispatch(movement)
         },
@@ -73,8 +89,6 @@ export default function App() {
         </SafeAreaView>
     )
 }
-
-console.log(BoardSize);
 
 const styles = StyleSheet.create({
     view: {

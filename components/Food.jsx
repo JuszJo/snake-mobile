@@ -1,6 +1,6 @@
 import { View } from "react-native";
 
-export default function Head({ position, size, color }) {
+export default function Food({ position, size, color }) {
     return (
         <View
             style={{
@@ -12,5 +12,5 @@ export default function Head({ position, size, color }) {
                 top: position[1] * size,
             }}
         ></View>
-    );
-} 
+    )
+}
